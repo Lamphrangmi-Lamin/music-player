@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./icons/music-solid.svg" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <title>Music Player</title>
 </head>
 <body>
-    <!--  -->
+    <div class="main">
+        <!-- Album Cover -->
+        <div class="album-cover">
+            <img src="./images/pexels-rachel-claire-4577578.jpg" alt="album-cover">
+        </div>
+        <!-- Buttons -->
+        <div class="buttons">
+            <div class="previous">
+                <img src="./icons/backward-step-solid.svg" alt="previous">
+            </div>
+            <div class="play-pause">
+                <img src="./icons/circle-play-solid.svg" alt="play">
+            </div>
+            <div class="next">
+                <img src="./icons/forward-step-solid.svg" alt="next">
+            </div>
+        </div>
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="current-time">00:00</div>
+            <input type="range" class="seek-slider" min="0" max="100" value="20">
+            <div class="total-duration">00:00</div>
+        </div>
+    </div>
 </body>
 </html>
