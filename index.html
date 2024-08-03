@@ -16,24 +16,33 @@
         <div class="album-cover">
             <img src="./images/pexels-rachel-claire-4577578.jpg" alt="album-cover">
         </div>
+        <!-- Title and Artist -->
+        <div class="description">
+            <h1 class="title">Album Title</h1>
+            <h2 class="artist">Artist Name</h2>
+        </div>
         <!-- Buttons -->
         <div class="buttons">
-            <div class="previous">
-                <img src="./icons/backward-step-solid.svg" alt="previous">
+            <div>
+                <img id="previous" src="./icons/backward-step-solid.svg" alt="previous">
             </div>
-            <div class="play-pause">
-                <img src="./icons/circle-play-solid.svg" alt="play">
+            <div>
+                <img id="play-pause" src="#" alt="play pause">
             </div>
-            <div class="next">
-                <img src="./icons/forward-step-solid.svg" alt="next">
+            <div>
+                <img id="next" src="./icons/forward-step-solid.svg" alt="next">
             </div>
         </div>
         <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="current-time">00:00</div>
-            <input type="range" class="seek-slider" min="0" max="100" value="20">
+            <input id="seek-slider" type="range" class="seek-slider" min="0" max="100" value="20">
             <div class="total-duration">00:00</div>
         </div>
+        <!-- Audio Player -->
+        <audio id="current-track" src="./audio/IIT BOMBAY MOVIE (mp3cut.net).mp3" class="music"></audio>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
