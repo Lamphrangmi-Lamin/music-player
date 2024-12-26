@@ -19,7 +19,10 @@
         <!-- Title and Artist -->
         <div class="description">
             <h3 class="title">Album Title</h3>
-            <h4 class="artist">Artist Name</h4>
+        </div>
+        <!-- Track picker -->
+        <div class="track-picker">
+            <input id="track-picker" type="file" accept="audio/*">
         </div>
         <!-- Buttons -->
         <div class="buttons">
@@ -37,10 +40,10 @@
         <div class="progress-bar">
             <div class="current-time">00:00</div>
             <input id="seek-slider" type="range" class="seek-slider" min="0" max="100" value="20">
-            <div class="total-duration"></div>
+            <div class="total-duration">00:00</div>
         </div>
         <!-- Audio Player -->
-        <audio id="current-track" src="./audio/IIT BOMBAY MOVIE (mp3cut.net).mp3" class="music"></audio>
+        <audio id="current-track" src="#" class="music"></audio>
     </div>
 
     <script src="./script.js"></script>
