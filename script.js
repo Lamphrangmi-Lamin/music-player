@@ -6,6 +6,17 @@ const currentTime = document.querySelector('.current-time');
 const title = document.querySelector('.title');
 const albumCover = document.querySelector('.album-cover');
 const trackPicker =  document.getElementById('track-picker');
+let files = trackPicker.files; // FileList containing a list of objects representing the track files which is not a proper array
+const next = document.getElementById('next');
+const previous = document.getElementById('previous');
+
+// update the track files with their URLs
+let playListArray = Array.from(files).map((file) => {
+    return {
+        name: file.name,
+        url: URL.createObjectURL(file)
+    }
+})
 
 // initially display the currentTime
 currentTime.textContent = formatTime(audio.currentTime);
@@ -54,11 +65,12 @@ function playPause() {
 
 // adding functionality to the track-picker
 trackPicker.addEventListener('change', (e) => {
-    audio.pause();
-    const file = e.target.files[0];
-    const url = URL.createObjectURL(file);
-    audio.src = url;
-    title.textContent = file.name;
+    // audio.pause();
+    // console.log(playListArray);
+    // const url = URL.createObjectURL(file);
+    const firstTrack =  playListArray[0];
+    audio.src = playListArray[0].url;
+    title.textContent = firstTrack.name;
     audio.load();
     // update metadata after loading
     audio.addEventListener('loadedmetadata', () => {
@@ -67,4 +79,42 @@ trackPicker.addEventListener('change', (e) => {
         currentTime.textContent = formatTime(audio.currentTime);
         seekSlider.value = Number(audio.currentTime);
     })
+    
+})
+
+// update metadata after loading
+// audio.addEventListener('loadedmetadata', () => {
+//     duration.textContent = formatTime(audio.duration);
+//     seekSlider.max = audio.duration;
+//     currentTime.textContent = formatTime(audio.currentTime);
+//     seekSlider.value = Number(audio.currentTime);
+// })
+
+
+// adding functionality to the next button
+next.addEventListener('click', () => {
+    const currentIndex = playListArray.findIndex((track) => track.url === audio.src);
+    let nextIndex = currentIndex + 1;
+    if (nextIndex < playListArray.length) {
+        audio.src = playListArray[nextIndex].url;
+        title.textContent = playListArray[nextIndex].name;
+        console.log(nextIndex);
+        audio.play();
+    } else {
+        nextIndex = 0;
+        audio.src = playListArray[nextIndex].url;
+        title.textContent = playListArray[nextIndex].name;
+        audio.play();
+    }
+})
+
+// adding functionality to the previous button
+previous.addEventListener('click', () => {
+    const currentIndex = playListArray.findIndex((track) => track.url === audio.src);
+    let previousIndex =  currentIndex - 1;
+    if (previousIndex >= 0) {
+        audio.src = playListArray[previousIndex].url;
+        title.textContent = playListArray[previousIndex].name;
+        audio.play();
+    }
 })
