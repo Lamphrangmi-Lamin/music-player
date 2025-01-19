@@ -24,6 +24,7 @@ body {
     width: 290px;
     height: 200px;
     border-radius: .5rem;
+    background-color: #000;
 }
 
 .album-cover {
