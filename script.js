@@ -82,15 +82,6 @@ trackPicker.addEventListener('change', (e) => {
     
 })
 
-// update metadata after loading
-// audio.addEventListener('loadedmetadata', () => {
-//     duration.textContent = formatTime(audio.duration);
-//     seekSlider.max = audio.duration;
-//     currentTime.textContent = formatTime(audio.currentTime);
-//     seekSlider.value = Number(audio.currentTime);
-// })
-
-
 // adding functionality to the next button
 next.addEventListener('click', () => {
     const currentIndex = playListArray.findIndex((track) => track.url === audio.src);
@@ -113,6 +104,11 @@ previous.addEventListener('click', () => {
     const currentIndex = playListArray.findIndex((track) => track.url === audio.src);
     let previousIndex =  currentIndex - 1;
     if (previousIndex >= 0) {
+        audio.src = playListArray[previousIndex].url;
+        title.textContent = playListArray[previousIndex].name;
+        audio.play();
+    } else {
+        previousIndex =  playListArray.length - 1;
         audio.src = playListArray[previousIndex].url;
         title.textContent = playListArray[previousIndex].name;
         audio.play();
