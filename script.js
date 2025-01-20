@@ -6,17 +6,10 @@ const currentTime = document.querySelector('.current-time');
 const title = document.querySelector('.title');
 const albumCover = document.querySelector('.album-cover');
 const trackPicker =  document.getElementById('track-picker');
-let files = trackPicker.files; // FileList containing a list of objects representing the track files which is not a proper array
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
 
-// update the track files with their URLs
-let playListArray = Array.from(files).map((file) => {
-    return {
-        name: file.name,
-        url: URL.createObjectURL(file)
-    }
-})
+let playListArray = [];
 
 // initially display the currentTime
 currentTime.textContent = formatTime(audio.currentTime);
@@ -65,13 +58,21 @@ function playPause() {
 
 // adding functionality to the track-picker
 trackPicker.addEventListener('change', (e) => {
-    // audio.pause();
-    // console.log(playListArray);
-    // const url = URL.createObjectURL(file);
+    // FileList containing a list of objects representing the track files which is not a proper array
+    const files = Array.from(e.target.files);
+
+    // update the track files with their URLs
+    playListArray = files.map(file => {
+        return {
+            name: file.name,
+            url: URL.createObjectURL(file)
+        }
+    })
     const firstTrack =  playListArray[0];
     audio.src = playListArray[0].url;
     title.textContent = firstTrack.name;
     audio.load();
+    
     // update metadata after loading
     audio.addEventListener('loadedmetadata', () => {
         duration.textContent = formatTime(audio.duration);
