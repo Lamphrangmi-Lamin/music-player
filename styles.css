@@ -32,6 +32,10 @@ body {
     justify-content: center;
 }
 
+.title {
+    max-width: 200px;
+}
+
 /* Buttons */
 .buttons img {
     width: 30px;

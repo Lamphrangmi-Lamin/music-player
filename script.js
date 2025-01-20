@@ -87,11 +87,13 @@ next.addEventListener('click', () => {
     const currentIndex = playListArray.findIndex((track) => track.url === audio.src);
     let nextIndex = currentIndex + 1;
     if (nextIndex < playListArray.length) {
+        audio.load();
         audio.src = playListArray[nextIndex].url;
         title.textContent = playListArray[nextIndex].name;
         console.log(nextIndex);
         audio.play();
     } else {
+        audio.load();
         nextIndex = 0;
         audio.src = playListArray[nextIndex].url;
         title.textContent = playListArray[nextIndex].name;
@@ -104,10 +106,12 @@ previous.addEventListener('click', () => {
     const currentIndex = playListArray.findIndex((track) => track.url === audio.src);
     let previousIndex =  currentIndex - 1;
     if (previousIndex >= 0) {
+        audio.load();
         audio.src = playListArray[previousIndex].url;
         title.textContent = playListArray[previousIndex].name;
         audio.play();
     } else {
+        audio.load();
         previousIndex =  playListArray.length - 1;
         audio.src = playListArray[previousIndex].url;
         title.textContent = playListArray[previousIndex].name;
